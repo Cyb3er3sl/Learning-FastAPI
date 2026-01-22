@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .database import engine, Base
-from .routes import jokes, users, login
+from .routes import jokes, users, login, posts
 
 
 Base.metadata.create_all(bind=engine)
@@ -10,6 +10,7 @@ app = FastAPI()
 app.include_router(jokes.router)
 app.include_router(users.router)
 app.include_router(login.router)
+app.include_router(posts.router)
 
 @app.get("/")
 def root():
